@@ -1,14 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+    <!-- Meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mars Weather Tracker</title>
 
-  <!-- Meta -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mars Weather Tracker</title>
+    <!-- Google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700;800&family=Muli:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
-</head>
-<body>
+    <!-- Styles -->
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <main class="current-weather">
+      <h1 class="main-title">Latest weather at placeholder on Mars</h1>
 
-</body>
+      <div class="date">
+        <h2 class="section-title section-title--date">Sol 001</h2>
+
+        <p class="date-day">September 30</p>
+      </div>
+
+      <div class="temp">
+        <h2 class="section-title">Temperature</h2>
+
+        <p class="reading">High: -20°C</p>
+        <p class="reading">Low: -120°C</p>
+      </div>
+
+      <div class="wind">
+        <h2 class="section-title">Wind</h2>
+
+        <p class="reading">85 km/h</p>
+
+        <div class="wind-direction">
+          <p>45deg</p>
+          <div class="wind-arrow"></div>
+        </div>
+      </div>
+
+      <div class="info">
+        <p></p>
+        <p></p>
+      </div>
+
+      <div class="unit">
+        <label for="celsius">°C</label>
+        <input type="radio" name="unit" id="cel" checked>
+
+        <button class="input-toggle"></button>
+
+        <label for="fahrenheit">°F</label>
+        <input type="radio" name="unit" id="fah">
+      </div>
+
+    </main>
+
+    <div class="previous-weather">
+      <label for="weather-toggle" class="show-prev-weather-label">
+        &#8593; <span class="sr-only">Show previous weather</span>
+      </label>
+
+      <input type="checkbox" id="weather-toggle" class="show-prev-weather-toggle">
+      <h2 class="main-title">Previous 7 days</h2>
+
+      <div class="previous-days">
+        <div class="previous-day">
+          <h3 class="previous-day-sol">Sol 000</h3>
+          <p class="previous-day-date">September 29</p>
+          <p class="previous-day-temp">High: -20°C</p>
+          <p class="previous-day-temp">Low: -120°C</p>
+          <button class="previous-day-more-info">More Info</button>
+        </div>
+      </div>
+    </div>
+
+  </body>
 </html>
