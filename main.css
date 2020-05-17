@@ -6,6 +6,7 @@
 }
 
 :root {
+  --wind-padding: 0 0.2em;
   --fweight-light: 300;
   --fweight-normal: 400;
   --fweight-semi: 500;
@@ -107,6 +108,19 @@ h1, h2, h3 {
 }
 .wind {
   grid-column: 3 / 4;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: min-content 1fr;
+}
+
+.wind .section-title {
+  grid-column: 2 / 3;
+  padding: var(--wind-padding);
+}
+
+.wind .reading {
+  grid-column: 2 / 3;
+  padding: var(--wind-padding);
 }
 
 .wind-direction {
@@ -117,6 +131,7 @@ h1, h2, h3 {
   border-radius: 50%;
   display: grid;
   place-items: center;
+  grid-row: 1 / span 2;
 }
 
 .wind-arrow {
@@ -135,6 +150,55 @@ h1, h2, h3 {
   grid-column: 1 / 3;
 }
 
-.input-toggle {
+.unit {
   grid-column: 3 / 4;
+  place-self: end;
+  color: var(--color-light);
+  display: flex;
+  gap: 0.4em;
+  opacity: 0.7;
+  transition: opacity 250ms linear;
+}
+
+.unit:hover {
+  opacity: 1;
+}
+
+.unit label {
+  cursor: pointer;
+}
+
+.unit input {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.input-toggle {
+  cursor: pointer;
+  width: 4em;
+  border: 2px solid var(--color-light);
+  background: transparent;
+  padding: 0;
+  border-radius: 100vmax;
+}
+
+
+.input-toggle::after {
+  content: '';
+  display: block;
+  background-color: var(--color-light);
+  border-radius: 50%;
+  height: 1rem;
+  margin: 3px;
+  margin-left: auto;
+  width: 1rem;
+}
+
+.unit :checked ~ .input-toggle::after {
+  margin-left: 3px;
 }
