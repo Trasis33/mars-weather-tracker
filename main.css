@@ -109,6 +109,28 @@ h1, h2, h3 {
   grid-column: 3 / 4;
 }
 
+.wind-direction {
+  --size: 6rem;
+  width: var(--size);
+  height: var(--size);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.wind-arrow {
+  --direction: 0deg;
+  --size: 1rem;
+  height: calc(var(--size) * 3);
+  width: var(--size);
+  background-color: var(--color-accent-dark);
+  clip-path: polygon(50% 0, 0% 100%, 100% 100%);
+  transform: translateY(-50%) rotate(var(--direction));
+  transform-origin: bottom center;
+  transition: transform 500ms ease;
+}
+
 .info {
   grid-column: 1 / 3;
 }
