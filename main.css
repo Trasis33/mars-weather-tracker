@@ -1,0 +1,82 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --fweight-light: 300;
+  --fweight-normal: 400;
+  --fweight-semi: 500;
+  --fweight-bold: 700;
+  --fsize-h1: 1.5rem;
+  --fsize-h2: 2.25rem;
+  --fsize-body: 1rem;
+  --fsize-xl: 3.5rem;
+  --color-light: #fff;
+  --color-grey: #a1a1a1;
+  --color-dark: #525252;
+  --color-accent: #da5757;
+  --color-accent-dark: #632c2c;
+}
+
+body {
+  margin: 0;
+  font-family: 'Titillium Web', sans-serif;
+  line-height: 1.4;
+  background-image: url(src/img/pia19808-main_tight_crop-monday-b.jpg);
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+  color: var(--color-light);
+}
+
+a {
+  color: var(--color-accent);
+}
+
+a:hover {
+  color: var(--color-accent-dark);
+}
+
+h1, h2, h3 {
+  line-height: 1;
+}
+
+.main-title {
+  font-size: var(--fsize-h1);
+  font-weight: var(--fweight-light);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  grid-column: 1 / -1;
+}
+
+.section-title {
+  font-size: var(--fsize-h2);
+  font-weight: var(--fweight-bold);
+  margin: 0;
+}
+
+.section-title--date {
+  font-size: var(--fsize-xl);
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.current-weather {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2.5em;
+  max-width: 800px;
+  margin: 4em auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
