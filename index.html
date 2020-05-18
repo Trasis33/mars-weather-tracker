@@ -16,56 +16,67 @@
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <main class="current-weather">
-      <h1 class="main-title">Latest weather at Elysium Planitia</h1>
+    <div class="background">
+      <main class="current-weather">
+        <h1 class="main-title">Latest weather at Elysium Planitia</h1>
 
-      <div class="date">
-        <h2 class="section-title section-title--date">Sol 001</h2>
+        <div class="date">
+          <h2 class="section-title section-title--date">Sol 001</h2>
 
-        <p class="date-day">September 30</p>
-      </div>
-
-      <div class="temp">
-        <h2 class="section-title">Temperature</h2>
-
-        <p class="reading">High: -20°C</p>
-        <p class="reading">Low: -120°C</p>
-      </div>
-
-      <div class="wind">
-        <h2 class="section-title">Wind</h2>
-
-        <p class="reading">85 km/h</p>
-
-        <div class="wind-direction">
-          <p class="sr-only">45deg</p>
-          <div class="wind-arrow"></div>
+          <p class="date-day">September 30</p>
         </div>
-      </div>
 
-      <div class="info">
-        <p>InSight is taking daily weather measurements (temperature, wind, pressure) on the surface of Mars at Elysium Planitia, a flat, smooth plain near Mars’ equator.</p>
-        <p>This is only a part of InSight’s mission. <a href="https://mars.nasa.gov/insight/mission/overview/">Click here</a> to find out more.</p>
-      </div>
+        <div class="temp">
+          <h2 class="section-title">Temperature</h2>
 
-      <div class="unit">
-        <label for="celsius">°C</label>
-        <input type="radio" name="unit" id="celsius" checked>
+          <p class="reading">High: -20°C</p>
+          <p class="reading">Low: -120°C</p>
+        </div>
 
-        <button class="input-toggle"></button>
+        <div class="wind">
+          <h2 class="section-title">Wind</h2>
 
-        <label for="fahrenheit">°F</label>
-        <input type="radio" name="unit" id="fahrenheit">
-      </div>
+          <p class="reading">85 km/h</p>
 
-    </main>
+          <div class="wind-direction">
+            <p class="sr-only">45deg</p>
+            <div class="wind-arrow"></div>
+          </div>
+        </div>
 
-    <div class="previous-weather show-weather">
+        <div class="info">
+          <p>
+            InSight is taking daily weather measurements (temperature, wind,
+            pressure) on the surface of Mars at Elysium Planitia, a flat, smooth
+            plain near Mars’ equator.
+          </p>
+          <p>
+            This is only a part of InSight’s mission.
+            <a href="https://mars.nasa.gov/insight/mission/overview/"
+              >Click here</a
+            >
+            to find out more.
+          </p>
+        </div>
+
+        <div class="unit">
+          <label for="celsius">°C</label>
+          <input type="radio" name="unit" id="celsius" checked />
+
+          <button class="input-toggle"></button>
+
+          <label for="fahrenheit">°F</label>
+          <input type="radio" name="unit" id="fahrenheit" />
+        </div>
+      </main>
+    </div>
+
+    <div class="previous-weather">
       <button for="weather-toggle" class="show-prev-weather">
         <span>&#8593;</span> <span class="sr-only">Show previous weather</span>
       </button>
 
-      <input type="checkbox" id="weather-toggle" class="show-prev-weather-toggle">
+      <!-- <input type="checkbox" id="weather-toggle" class="show-prev-weather-toggle"> -->
       <h2 class="main-title previous-weather-title">Previous 7 days</h2>
 
       <div class="previous-days">
@@ -121,5 +132,6 @@
       </div>
     </div>
 
+    <script src="index.js"></script>
   </body>
 </html>

@@ -11,10 +11,10 @@
   --fweight-normal: 400;
   --fweight-semi: 500;
   --fweight-bold: 700;
-  --fsize-h1: 1.75rem;
-  --fsize-h2: 1.4rem;
+  --fsize-h1: 1.5rem;
+  --fsize-h2: 2.25rem;
   --fsize-body: 1rem;
-  --fsize-xl: 3rem;
+  --fsize-xl: 3.5rem;
   --color-light: #fff;
   --color-grey: #a1a1a1;
   --color-dark: #525252;
@@ -73,7 +73,7 @@ h1, h2, h3 {
 }
 
 .reading {
-  font-size: var(--fsize-h2);
+  font-size: var(--fsize-h1);
   color: var(--color-grey);
   margin: 0;
 }
@@ -92,6 +92,10 @@ h1, h2, h3 {
   background: rgba(0, 0, 0, 0.7);
   padding: 2.5em;
   max-width: 800px;
+  margin: 4em auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2em;
 }
 
 .date {
@@ -343,23 +347,8 @@ h1, h2, h3 {
 }
 
 @media (min-width: 900px) {
-
-  :root {
-    --fsize-h1: 1.5rem;
-    --fsize-h2: 2.25rem;
-    --fsize-body: 1rem;
-    --fsize-xl: 3.5rem;
-  }
-
   body {
     height: 100vh;
     overflow: hidden;
-  }
-
-  .current-weather {
-    margin: 4em auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2em;
   }
 }
