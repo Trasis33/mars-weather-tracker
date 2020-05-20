@@ -16,6 +16,10 @@ const currentWindDirectionArrowElement = document.querySelector('[wind-direction
 const previousSolTemplate = document.querySelector('[previous-sol-template]')
 const previousSolContainer = document.querySelector('[previous-sols]')
 
+const inputToggle = document.querySelector('[input-toggle]')
+const celRadio = document.getElementById('celsius')
+const fahRadio = document.getElementById('fahrenheit')
+
 previousWeatherToggle.addEventListener('click', () => {
   previousWeather.classList.toggle('show-weather')
 })
@@ -50,7 +54,13 @@ const formatDate = (date) => {
 }
 
 const formatTemp = (temp) => {
-  return Math.round(temp)
+  let temperature = temp
+
+  if (!isMetric()) {
+    temperature = temp * (9 / 5) + 32
+  }
+
+  return Math.round(temperature)
 }
 
 const formatWindspeed = (windspeed) => {
@@ -61,6 +71,27 @@ getWeather().then(sols => {
   SelectedSolIndex = sols.length - 1
   displaySelectedSol(sols)
   displayPreviousSols(sols)
+  updateUnit()
+
+  inputToggle.addEventListener('click', () => {
+    let metric = !isMetric()
+    celRadio.checked = metric
+    fahRadio.checked = !metric
+    displaySelectedSol(sols)
+    displayPreviousSols(sols)
+    updateUnit()
+  })
+
+  celRadio.addEventListener('change', () => {
+    displaySelectedSol(sols)
+    displayPreviousSols(sols)
+    updateUnit()
+  })
+  fahRadio.addEventListener('change', () => {
+    displaySelectedSol(sols)
+    displayPreviousSols(sols)
+    updateUnit()
+  })
 })
 
 const displaySelectedSol = (sols) => {
@@ -89,5 +120,17 @@ const displayPreviousSols = (sols) => {
       displaySelectedSol(sols)
     })
     previousSolContainer.appendChild(solContainer)
+  })
+}
+
+const isMetric = () => {
+  return celRadio.checked
+}
+
+const updateUnit = () => {
+  const tempUnit = document.querySelectorAll('[temp-unit]')
+
+  tempUnit.forEach(unit => {
+    unit.innerText = isMetric() ? 'C' : 'F'
   })
 }

@@ -29,8 +29,8 @@
         <div class="temp">
           <h2 class="section-title">Temperature</h2>
 
-          <p class="reading">High: <span current-temp-high></span>°C</p>
-          <p class="reading">Low: <span current-temp-low></span>°C</p>
+          <p class="reading">High: <span current-temp-high></span>°<span temp-unit></span></p>
+          <p class="reading">Low: <span current-temp-low></span>°<span temp-unit></span></p>
         </div>
 
         <div class="wind">
@@ -63,7 +63,7 @@
           <label for="celsius">°C</label>
           <input type="radio" name="unit" id="celsius" checked />
 
-          <button class="input-toggle"></button>
+          <button class="input-toggle" input-toggle></button>
 
           <label for="fahrenheit">°F</label>
           <input type="radio" name="unit" id="fahrenheit" />
@@ -87,8 +87,8 @@
       <div class="previous-day">
         <h3 class="previous-day-sol">Sol <span prev-sol></span></h3>
         <p class="previous-day-date" prev-date></p>
-        <p class="previous-day-temp">High: <span prev-high-temp></span>°C</p>
-        <p class="previous-day-temp">Low: <span prev-low-temp></span>°C</p>
+        <p class="previous-day-temp">High: <span prev-high-temp></span>°<span temp-unit></span></p>
+        <p class="previous-day-temp">Low: <span prev-low-temp></span>°<span temp-unit></span></p>
         <button class="previous-day-more-info" select-button>More Info</button>
       </div>
     </template>
