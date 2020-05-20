@@ -4,6 +4,7 @@ const API_URL = 'https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype
 
 const previousWeatherToggle = document.querySelector('.show-prev-weather')
 const previousWeather = document.querySelector('.previous-weather')
+
 const currentSolElement = document.querySelector('[current-sol]')
 const currentDateElement = document.querySelector('[current-date]')
 const currentTempHighElement = document.querySelector('[current-temp-high]')
@@ -11,6 +12,9 @@ const currentTempLowElement = document.querySelector('[current-temp-low]')
 const currentWindspeedElement = document.querySelector('[current-windspeed]')
 const currentWindDirectionTextElement = document.querySelector('[wind-direction-text]')
 const currentWindDirectionArrowElement = document.querySelector('[wind-direction-arrow]')
+
+const previousSolTemplate = document.querySelector('[previous-sol-template]')
+const previousSolContainer = document.querySelector('[previous-sols]')
 
 previousWeatherToggle.addEventListener('click', () => {
   previousWeather.classList.toggle('show-weather')
@@ -56,6 +60,7 @@ const formatWindspeed = (windspeed) => {
 getWeather().then(sols => {
   SelectedSolIndex = sols.length - 1
   displaySelectedSol(sols)
+  displayPreviousSols(sols)
 })
 
 const displaySelectedSol = (sols) => {
@@ -68,4 +73,21 @@ const displaySelectedSol = (sols) => {
   currentWindspeedElement.innerText = formatWindspeed(selectedSol.windSpeed)
   currentWindDirectionTextElement.innerText = selectedSol.windDir
   currentWindDirectionArrowElement.style.setProperty('--direction', `${selectedSol.windDirDegrees}deg`)
+}
+
+const displayPreviousSols = (sols) => {
+  previousSolContainer.innerHTML = ''
+
+  sols.forEach((sol, index) => {
+    const solContainer = previousSolTemplate.content.cloneNode(true)
+    solContainer.querySelector('[prev-sol]').innerText = sol.sol
+    solContainer.querySelector('[prev-date]').innerText = formatDate(sol.date)
+    solContainer.querySelector('[prev-high-temp]').innerText = formatTemp(sol.maxTemp)
+    solContainer.querySelector('[prev-low-temp]').innerText = formatTemp(sol.minTemp)
+    solContainer.querySelector('[select-button]').addEventListener('click', () => {
+      SelectedSolIndex = index
+      displaySelectedSol(sols)
+    })
+    previousSolContainer.appendChild(solContainer)
+  })
 }
