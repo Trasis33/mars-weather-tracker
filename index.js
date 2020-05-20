@@ -45,6 +45,14 @@ const formatDate = (date) => {
   )
 }
 
+const formatTemp = (temp) => {
+  return Math.round(temp)
+}
+
+const formatWindspeed = (windspeed) => {
+  return Math.round(windspeed)
+}
+
 getWeather().then(sols => {
   SelectedSolIndex = sols.length - 1
   displaySelectedSol(sols)
@@ -55,9 +63,9 @@ const displaySelectedSol = (sols) => {
   console.log(selectedSol)
   currentSolElement.innerText = selectedSol.sol
   currentDateElement.innerText = formatDate(selectedSol.date)
-  currentTempHighElement.innerText = selectedSol.maxTemp
-  currentTempLowElement.innerText = selectedSol.minTemp
-  currentWindspeedElement.innerText = selectedSol.windSpeed
+  currentTempHighElement.innerText = formatTemp(selectedSol.maxTemp)
+  currentTempLowElement.innerText = formatTemp(selectedSol.minTemp)
+  currentWindspeedElement.innerText = formatWindspeed(selectedSol.windSpeed)
   currentWindDirectionTextElement.innerText = selectedSol.windDir
   currentWindDirectionArrowElement.style.setProperty('--direction', `${selectedSol.windDirDegrees}deg`)
 }
