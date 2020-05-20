@@ -4,10 +4,19 @@ const API_URL = 'https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype
 
 const previousWeatherToggle = document.querySelector('.show-prev-weather')
 const previousWeather = document.querySelector('.previous-weather')
+const currentSolElement = document.querySelector('[current-sol]')
+const currentDateElement = document.querySelector('[current-date]')
+const currentTempHighElement = document.querySelector('[current-temp-high]')
+const currentTempLowElement = document.querySelector('[current-temp-low]')
+const currentWindspeedElement = document.querySelector('[current-windspeed]')
+const currentWindDirectionTextElement = document.querySelector('[wind-direction-text]')
+const currentWindDirectionArrowElement = document.querySelector('[wind-direction-arrow]')
 
 previousWeatherToggle.addEventListener('click', () => {
   previousWeather.classList.toggle('show-weather')
 })
+
+let SelectedSolIndex
 
 const getWeather = async () => {
   const res = await fetch(API_URL)
@@ -17,8 +26,7 @@ const getWeather = async () => {
     validity_checks,
     ...solData
   } = data
-  // console.log(solData)
-  const temp = Object.entries(solData).map(([sol, data]) => {
+  return Object.entries(solData).map(([sol, data]) => {
     return {
       sol: sol,
       date: new Date(data.First_UTC),
@@ -29,7 +37,27 @@ const getWeather = async () => {
       windDir: data.WD.most_common.compass_point
     }
   })
-  console.log(temp)
 }
 
-getWeather()
+const formatDate = (date) => {
+  return date.toLocaleDateString(
+    undefined, { day: 'numeric', month: 'long' }
+  )
+}
+
+getWeather().then(sols => {
+  SelectedSolIndex = sols.length - 1
+  displaySelectedSol(sols)
+})
+
+const displaySelectedSol = (sols) => {
+  const selectedSol = sols[SelectedSolIndex]
+  console.log(selectedSol)
+  currentSolElement.innerText = selectedSol.sol
+  currentDateElement.innerText = formatDate(selectedSol.date)
+  currentTempHighElement.innerText = selectedSol.maxTemp
+  currentTempLowElement.innerText = selectedSol.minTemp
+  currentWindspeedElement.innerText = selectedSol.windSpeed
+  currentWindDirectionTextElement.innerText = selectedSol.windDir
+  currentWindDirectionArrowElement.style.setProperty('--direction', `${selectedSol.windDirDegrees}deg`)
+}
